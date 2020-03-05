@@ -1,8 +1,19 @@
 # This file is machine-generated - editing it directly is not advised
 
+[[ChainRulesCore]]
+deps = ["MuladdMacro"]
+git-tree-sha1 = "840cdd255e267a4dfcb14cecd872facb2997a326"
+uuid = "d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4"
+version = "0.7.1"
+
 [[Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 
 [[LinearAlgebra]]
 deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
+[[MuladdMacro]]
+git-tree-sha1 = "c6190f9a7fc5d9d5915ab29f2134421b12d24a68"
+uuid = "46d2c3a1-f734-5fdb-9937-b9b9aeba4221"
+version = "0.2.2"
