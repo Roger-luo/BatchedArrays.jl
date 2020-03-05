@@ -7,7 +7,7 @@ function ChainRulesCore.rrule(::typeof(bmm), A::AbstractArray{<:Real, 3}, B::Abs
         return (NO_FIELDS, ∇A, ∇B)
     end
 
-    return bmm(A, B), times_pullback
+    return bmm(A, B), bmm_pullback
 end
 
 function ChainRulesCore.rrule(::typeof(batched_tr), A::AbstractArray{T, 3}) where T
