@@ -16,3 +16,21 @@ function ChainRulesCore.rrule(::typeof(batched_tr), A::AbstractArray{T, 3}) wher
     end
     return batched_tr(A), batched_tr_pullback
 end
+
+using ZygoteRules: @adjoint
+
+@adjoint function bmm(A::AbstractArray{T, 3}, B::AbstractArray{T, 3}) where T
+    function bmm_pullback(Δ)
+        ∇A = bmm(Δ, BTranspose(B))
+        ∇B = bmm(BTranspose(A), Δ)
+        return ∇A, ∇B
+    end
+    return bmm(A, B), bmm_pullback
+end
+
+@adjoint function batched_tr(A::AbstractArray{T, 3}) where T
+    function batched_tr_pullback(Δ)
+        return BScale(Δ, size(A, 1))
+    end
+    return batched_tr(A), batched_tr_pullback
+end
