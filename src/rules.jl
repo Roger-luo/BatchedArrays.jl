@@ -30,7 +30,7 @@ end
 
 @adjoint function batched_tr(A::AbstractArray{T, 3}) where T
     function batched_tr_pullback(Δ)
-        return BScale(Δ, size(A, 1))
+        return (BScale(Δ, size(A, 1)), )
     end
     return batched_tr(A), batched_tr_pullback
 end
